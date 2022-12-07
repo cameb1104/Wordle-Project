@@ -2,44 +2,62 @@ from letter_state import LetterState
 
 class Wordle:
 
+    # Possible attempts for a given game
     MAX_ATTEMPTS = 6
-    WORD_LENGTH = 5
 
-    def __init__(self, secret: str):
-        self.secret: str = secret.upper()
+    # Character length of word
+    MAX_LENGTH = 5
+
+    def __init__(self, key: str):
+        """
+        
+        """
+        self.key = key
+        key: str = key.upper()
         self.attempts = []
 
-    def attempt(self, word: str):
+    def get_attempt(self, word: str):
+        """
+        
+        """
+        self.word = word
         word = word.upper()
         self.attempts.append(word)
 
-    def guess(self, word: str):
+    def get_guess(self, word: str):
+        """
+        
+        """
+        self.word = word
         word = word.upper()
         result = []
 
-        for i in range(self.WORD_LENGTH):
+        for i in range(self.MAX_LENGTH):
             character = word[i]
             letter = LetterState(character)
-            letter.is_in_word = character in self.secret
-            letter.is_in_position = character == self.secret[i]
+            letter.is_in_word = character in self.key
+            letter.is_in_position = character == self.key[i]
             result.append(letter)
         
         return result
 
     @property
-    def is_solved(self):
+    def prop_solved(self):
         """
+
         """
-        return len(self.attempts) > 0 and self.attempts[-1] == self.secret
+        return len(self.attempts) > 0 and self.attempts[-1] == self.key
 
     @property
-    def remaining_attempts(self) -> str:
+    def prop_remaining_attempts(self):
         """
+
         """
         return self.MAX_ATTEMPTS - len(self.attempts)
 
     @property
-    def can_attempt(self):
+    def prop_can_guess(self):
         """
+
         """
-        return self.remaining_attempts > 0 and not self.is_solved
+        return self.prop_remaining_attempts > 0 and self.prop_solved == False
