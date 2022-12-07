@@ -1,6 +1,8 @@
-
 class LetterState:
-
+    """
+    
+    """
+    
     def __init__(self, character: str):
         """
         
