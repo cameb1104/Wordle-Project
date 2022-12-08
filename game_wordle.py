@@ -128,7 +128,7 @@ class Main(Results):
         else:
             print("You've failed to solve the puzzle.")
             print("")
-            print("The secret word was: " + edit_color.GREEN + wordle.key + edit_color.RESET)
+            print("The key word was: " + edit_color.GREEN + wordle.key + edit_color.RESET)
             print("")
 
 # Runs the game
