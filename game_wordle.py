@@ -100,7 +100,7 @@ class Main(Results):
                 )
                 continue
 
-            # Checks if the user input is a five letter word is a real word
+            # Checks if the user input is a real word inside the data set
             if not word in word_set:
                 print(
                     edit_color.RED
